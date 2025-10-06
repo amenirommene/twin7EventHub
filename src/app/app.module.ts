@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule, //importé par défaut dans le module racine
     AppRoutingModule,
+    SharedModule,
     FormsModule //dans ce module on trouve la directive NgModel
   ],
   providers: [],
