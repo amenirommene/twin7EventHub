@@ -19,9 +19,10 @@
            [placeholder]="placeHolderTexte" [(ngModel)]="monInput2" > {{monInput2}}
 
     <div class="row g-3">
-        <div class="col-md-4" *ngFor="let event of listEvent" >
-            <div *ngIf="event.title.toLowerCase().includes(monInput2.toLowerCase())" class="card h-100 shadow-sm"  >
-                <img [src]="event.imageUrl"
+        <div class="col-md-4" *ngFor="let event of listEvent | contains:monInput2" >
+            <!---<div *ngIf="event.title.toLowerCase().includes(monInput2.toLowerCase())" class="card h-100 shadow-sm"  >--->
+              <div class="card h-100 shadow-sm">
+              <img [src]="event.imageUrl"
                      class="card-img-top img-fluid"
                      style="height: 200px; object-fit: cover;">
 
