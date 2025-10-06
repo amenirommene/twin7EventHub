@@ -1,6 +1,6 @@
 <!---<nav [class]="getClass()">--->
  <!--- <nav [class]="isAdmin ? cssAdmin : cssNotAdmin">--->
-     <nav [ngClass]="{cssAdmin : isAdmin , cssNotAdmin :  !isAdmin }">
+     <nav [ngClass]="isAdmin ? cssAdmin : cssNotAdmin">
   <div class="container">
     <!-- Logo / Nom de l'application -->
     <a class="navbar-brand fw-bold" routerLink="/">EventHub</a>
