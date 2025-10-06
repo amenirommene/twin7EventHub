@@ -1,0 +1,44 @@
+
+<!--property binding : lier une propriété HTML avec une propriété du composant-->
+<!---<input [value]="monInput" [placeholder]="placeHolderTexte"  #x />
+{{monInput}}
+{{x}}--->
+<!--event binding-->
+<!---<button (click)="like(x.value)">Like</button>--->
+<!---<div>
+<input [placeholder]="placeHolderTexte" [(ngModel)]="monInput2">
+{{monInput2}}
+</div>--->
+
+<div class="container py-4">
+  <!---interpolation: afficher une valeur de type simple ici pageTitle---->
+    <h2 class="mb-3">{{ pageTitle }}</h2>
+
+    <!-- Recherche -->
+    <input type="text" class="form-control mb-4"
+           [placeholder]="placeHolderTexte" [(ngModel)]="monInput2" > {{monInput2}}
+
+    <div class="row g-3">
+        <div class="col-md-4" *ngFor="let event of listEvent" >
+            <div *ngIf="event.title.toLowerCase().includes(monInput2.toLowerCase())" class="card h-100 shadow-sm"  >
+                <img [src]="event.imageUrl"
+                     class="card-img-top img-fluid"
+                     style="height: 200px; object-fit: cover;">
+
+                <div class="card-body">
+                    <h5 class="card-title">{{event.title | uppercase}}</h5>
+                    <p class="text-muted">{{event.place}}, {{event.date | date: 'mediumDate'}}</p>
+                    <p>{{event.description}}</p>
+                    <p class="fw-bold">{{event.price | number:'1.2-2' |  currency:'TND'}}</p>
+                    <p>Place disponibles : {{event.nbPlaces}}</p>
+
+                    <!-- Bouton Like -->
+                    <button class="btn btn-sm btn-primary" (click)="likeEvent(event)" >
+                        👍 Like
+                    </button>
+                    <span class="ms-2">{{event.nbLikes}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
