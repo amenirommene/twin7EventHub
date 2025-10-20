@@ -38,8 +38,10 @@
                         👍 Like
                     </button>
                     <span class="ms-2">{{event.nbLikes}}</span>
+                   <a [routerLink]="['./',event.id]">Details</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<router-outlet></router-outlet>
