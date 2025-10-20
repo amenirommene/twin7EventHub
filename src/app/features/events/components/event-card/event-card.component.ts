@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Event } from '../../../../models/event';
 
 @Component({
@@ -7,8 +7,10 @@ import { Event } from '../../../../models/event';
   styleUrl: './event-card.component.css'
 })
 export class EventCardComponent {
+  p : string = "valeur de p dans EventCard";
 @Input() event! : Event;
+@Output() liked = new EventEmitter<Event>();
 likeEvent(e:Event){
-
+this.liked.emit(e);
 }
 }
