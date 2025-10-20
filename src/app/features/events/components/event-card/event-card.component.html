@@ -1,0 +1,20 @@
+ <div class="card h-100 shadow-sm">
+              <img [src]="event?.imageUrl"
+                     class="card-img-top img-fluid"
+                     style="height: 200px; object-fit: cover;">
+
+                <div class="card-body">
+                    <h5 class="card-title" appHighLight>{{event?.title | uppercase}}</h5>
+                    <p class="text-muted">{{event?.place}}, {{event?.date | date: 'mediumDate'}}</p>
+                    <p>{{event?.description}}</p>
+                    <p class="fw-bold">{{event?.price | number:'1.2-2' |  currency:'TND'}}</p>
+                    <p>Place disponibles : {{event?.nbPlaces}}</p>
+
+                    <!-- Bouton Like -->
+                    <button class="btn btn-sm btn-primary" (click)="likeEvent(event)" >
+                        👍 Like
+                    </button>
+                    <span class="ms-2">{{event?.nbLikes}}</span>
+                   <a [routerLink]="['./',event?.id]">Details</a>
+                </div>
+            </div>

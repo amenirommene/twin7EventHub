@@ -7,13 +7,15 @@ import { ListEventComponent } from './pages/list-event/list-event.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { EventDetailsComponent } from './pages/event-details/event-details.component';
+import { EventCardComponent } from './components/event-card/event-card.component';
 
 
 @NgModule({
   declarations: [
     EventsComponent,
     ListEventComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    EventCardComponent
   ],
   imports: [
     CommonModule,
