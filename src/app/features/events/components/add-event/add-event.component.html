@@ -1,0 +1,12 @@
+<form [formGroup]="myForm">  <!--propertyBinding-->
+  <label>Title</label>
+  <input formControlName="title" />  <!--récupérer la valeur de title à partir de FormGroup-->
+ <div *ngIf="myForm.get('title')?.invalid && myForm.get('title')?.touched">
+  <div *ngIf="myForm.get('title')?.hasError('required')">Le titre est obligatoire</div>
+  <div *ngIf="myForm.get('title')?.hasError('minlength')">Le titre doit contenir au moins 6 caractères </div>
+ </div>
+  <br>
+  <label>Description</label>
+  <input formControlName="description" />
+  <input type="submit" value="Ajouter" [disabled]="myForm.invalid">  <!--propertyBinding-->
+</form>
