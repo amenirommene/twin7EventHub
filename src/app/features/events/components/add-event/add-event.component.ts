@@ -15,7 +15,7 @@ export class AddEventComponent {
 
    this.myForm=new FormGroup({
     description : new FormControl('', Validators.required),
-    title:new FormControl('',[Validators.required,Validators.minLength(6)])
+    title:new FormControl('',[Validators.required,Validators.minLength(10)])
 
    });
 
@@ -25,5 +25,8 @@ export class AddEventComponent {
     description : new FormControl()
    });
   }
+
+  get title(){
+    return this.myForm.get('title');  }
 
 }
