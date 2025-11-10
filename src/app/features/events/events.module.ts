@@ -9,6 +9,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { EventDetailsComponent } from './pages/event-details/event-details.component';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
+import { ParticipationFormComponent } from './components/participation-form/participation-form.component';
 
 
 @NgModule({
@@ -17,14 +18,15 @@ import { AddEventComponent } from './components/add-event/add-event.component';
     ListEventComponent,
     EventDetailsComponent,
     EventCardComponent,
-    AddEventComponent
+    AddEventComponent,
+    ParticipationFormComponent
   ],
   imports: [
     CommonModule,
     EventsRoutingModule,
-    FormsModule,
+    FormsModule, //template driven
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule //reactive forms
   ]
 })
 export class EventsModule { }
