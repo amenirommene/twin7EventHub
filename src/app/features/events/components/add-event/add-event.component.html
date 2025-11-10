@@ -11,5 +11,23 @@
   <br>
   <label>Description</label>
   <input formControlName="description" />
+  <div>
+    <label>Price</label>
+  <input formControlName="price"  />
+   <div *ngIf="price?.invalid && price?.touched">
+      <div *ngIf="price?.hasError('required')">Le titre est obligatoire</div>
+      <div *ngIf="price?.hasError('pattern')">
+        Le prix doit  doit être un nombre </div>
+ </div>
+ </div>
+  <div>
+    <label>Date</label>
+  <input formControlName="date" class="form-control" type="date"  />
+   <div *ngIf="date?.invalid && date?.touched">
+      <div *ngIf="date?.hasError('required')">La date est obligatoire</div>
+      <div *ngIf="date?.hasError('futureDateInvalid')">
+        {{date?.errors?.['futureDateInvalid']?.['msg']}} </div>
+ </div>
+ </div>
   <input type="submit" value="Ajouter" [disabled]="myForm.invalid">  <!--propertyBinding-->
 </form>
