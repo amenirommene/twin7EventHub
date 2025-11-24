@@ -10,6 +10,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
 import { EventsModule } from './features/events/events.module';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [ // liste des composants/directives/pipes associés à ce module
@@ -22,10 +23,10 @@ import { EventsModule } from './features/events/events.module';
   imports: [
     BrowserModule, //importé par défaut dans le module racine
     AppRoutingModule,
-  
+
    // FormsModule //dans ce module on trouve la directive NgModel
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

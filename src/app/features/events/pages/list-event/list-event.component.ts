@@ -2,6 +2,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Event } from '../../../../models/event';
 import { EventCardComponent } from '../../components/event-card/event-card.component';
+import { EventsService } from '../../../../data-access/services/events.service';
 
 @Component({
   selector: 'app-list-event',
@@ -9,12 +10,20 @@ import { EventCardComponent } from '../../components/event-card/event-card.compo
   styleUrl: './list-event.component.css'
 })
 export class ListEventComponent {
+  constructor(private es:EventsService){}
   @ViewChild(EventCardComponent) eventCard! : EventCardComponent;
-  listEvent : Event[] = [
-  {id:1, title:"Angular Summit", description:"Conférence sur Angular et l’écosystème front-end", date:new Date("2025-11-10"), place:"Tunis", price:50, organizerId:1,imageUrl:"images/event1.PNG", nbPlaces:25, nbLikes:0 },
-  {id:2, title:"Web dev days", description:"Journée dédiée aux frameworks web modernes.", date:new Date("2025-01-05"), place:"Ariana",price:30, organizerId:1,imageUrl:"images/event2.PNG", nbPlaces:0, nbLikes:0}
-
-  ];
+  listEvent : Event[] = [];
+  ngOnInit(){
+    this.es.getAllEventsFromBackend().subscribe({
+      next : data=>{
+        this.listEvent=data.body || [], //[] si jamais le body renvoit null;
+        console.log(data.status+" : " +data.statusText)
+      },
+        error: error=>console.log(error.error.message),
+      complete : ()=>console.log("terminé")
+    }
+    );
+  }
   monInput : string = "bonjour";
   monInput2 : string = "";
   pageTitle : string = "Liste des évènements";
@@ -27,6 +36,6 @@ export class ListEventComponent {
   }
 
 ngAfterViewInit(){
-  console.log(this.eventCard.p);
+ // console.log(this.eventCard?.p);
 }
 }
