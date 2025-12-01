@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Event } from '../../models/event';
 import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 
 
 @Injectable({
@@ -16,7 +16,22 @@ export class EventsService {
   {id:2, title:"Web dev days", description:"Journée dédiée aux frameworks web modernes.", date:new Date("2025-01-05"), place:"Ariana",price:30, organizerId:1,imageUrl:"images/event2.PNG", nbPlaces:0, nbLikes:0}
 
   ];
-  getAllEventsFromBackend():Observable<HttpResponse<Event[]>>{
+
+  getAllEventsFromBackend2():Observable<Event[]>{
+return this._http.get<Event[]>(this.apiEventsUrl)}
+
+getExpensiveEvents():Observable<{title: string, finalPrice: number}[]>{  //{title: string, finalPrice: number}
+return this._http.get<Event[]>(this.apiEventsUrl).pipe(
+  map(events => events.filter(e => e.price > 50)),
+  map(events =>
+      events.map(e => ({
+        title: e.title,
+        finalPrice: e.price * 1.2
+      }))
+    ),
+  catchError((error:HttpErrorResponse)=>{return of([])}));
+  }
+getAllEventsFromBackend():Observable<HttpResponse<Event[]>>{
 return this._http.get<Event[]>(this.apiEventsUrl,{
 observe:'response',
 params: { active: 'true', sort: 'name' },
