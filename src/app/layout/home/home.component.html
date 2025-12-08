@@ -1,1 +1,6 @@
-<p>home works!</p>
+ <div class="row g-3">
+        <div class="col-md-4" *ngFor="let e of topEvents">
+            <!---<div *ngIf="event.title.toLowerCase().includes(monInput2.toLowerCase())" class="card h-100 shadow-sm"  >--->
+             <app-card [event]="e"></app-card>
+        </div>
+    </div>

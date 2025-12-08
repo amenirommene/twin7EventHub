@@ -10,6 +10,7 @@ import { EventDetailsComponent } from './pages/event-details/event-details.compo
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { ParticipationFormComponent } from './components/participation-form/participation-form.component';
+import { CardComponent } from '../../layout/card/card.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ParticipationFormComponent } from './components/participation-form/part
     EventsRoutingModule,
     FormsModule, //template driven
     SharedModule,
-    ReactiveFormsModule //reactive forms
+    ReactiveFormsModule, //reactive forms
+    CardComponent
   ]
 })
 export class EventsModule { }

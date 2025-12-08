@@ -21,7 +21,7 @@
     <div class="row g-3">
         <div class="col-md-4" *ngFor="let e of listEvent | contains:monInput2" >
             <!---<div *ngIf="event.title.toLowerCase().includes(monInput2.toLowerCase())" class="card h-100 shadow-sm"  >--->
-             <app-event-card [event]="e" (liked)="likeEvent($event)"></app-event-card>
+             <app-card [event]="e" (liked)="likeEvent($event)"></app-card>
         </div>
     </div>
 </div>

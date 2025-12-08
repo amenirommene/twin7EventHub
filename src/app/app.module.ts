@@ -11,6 +11,8 @@ import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
 import { EventsModule } from './features/events/events.module';
 import { provideHttpClient } from '@angular/common/http';
+import { EventCardComponent } from './features/events/components/event-card/event-card.component';
+import { CardComponent } from './layout/card/card.component';
 
 @NgModule({
   declarations: [ // liste des composants/directives/pipes associés à ce module
@@ -18,11 +20,13 @@ import { provideHttpClient } from '@angular/common/http';
     HeaderComponent,
     HomeComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+
   ],
   imports: [
     BrowserModule, //importé par défaut dans le module racine
     AppRoutingModule,
+    CardComponent   //importer un composant StandAlone
 
    // FormsModule //dans ce module on trouve la directive NgModel
   ],

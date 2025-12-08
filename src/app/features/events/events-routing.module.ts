@@ -13,7 +13,8 @@ const routes: Routes = [
       {path:'participate/:id/:price', component:ParticipationFormComponent},
        //localhost:4200/events/add
      {path:'add', component:AddEventComponent}, //à placer avant la route paramétrée qui suit
-      //localhost:4200/events
+      {path:'update/:id', component:AddEventComponent},
+     //localhost:4200/events
      { path: '', component: ListEventComponent, children:
         [
          // localhost:4200/events/1
