@@ -10,9 +10,10 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
 import { EventsModule } from './features/events/events.module';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { EventCardComponent } from './features/events/components/event-card/event-card.component';
 import { CardComponent } from './layout/card/card.component';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [ // liste des composants/directives/pipes associés à ce module
@@ -30,7 +31,7 @@ import { CardComponent } from './layout/card/card.component';
 
    // FormsModule //dans ce module on trouve la directive NgModel
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(withInterceptors([authInterceptor]))],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

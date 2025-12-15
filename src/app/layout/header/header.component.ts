@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../core/services/auth.service';
+import { Subscription } from 'rxjs';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-header',
@@ -15,4 +18,36 @@ getClass() : string {
   else
     return this.cssNotAdmin
 }
+currentUser: User | null = null;
+  isAuthenticated: boolean = false;
+  private subscriptions = new Subscription();
+
+  // Injection des services via le constructeur
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    // S'abonner aux changements de l'utilisateur actuel
+    this.subscriptions.add(
+      this.authService.currentUser$.subscribe(user => {
+        this.currentUser = user;
+      })
+    );
+
+    // S'abonner aux changements de l'état d'authentification
+    this.subscriptions.add(
+      this.authService.isAuthenticated$.subscribe(isAuth => {
+        this.isAuthenticated = isAuth;
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    // Nettoyer les abonnements pour éviter les fuites mémoire
+    this.subscriptions.unsubscribe();
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
+
 }
